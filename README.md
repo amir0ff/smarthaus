@@ -12,7 +12,7 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 5. 👍 ****Simple****: No need for external MQTT broker configurations   
   
 ## Installation  
-* Upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) docs section.
+* On your device, upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) docs section.
 * Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
 
   
