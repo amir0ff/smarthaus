@@ -11,8 +11,8 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 4. 🔐 ****Secure****: It's centralized in your network and does not require an external "cloud" server  
 5. 👍 ****Simple****: No need for external MQTT broker configurations   
   
-## Setup  
-* On your device, upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) in the docs section.
+## Setup
+* On your device, upload one of the required Arduino example sketches that are available in the [sketches](https://github.com/ameer157/smarthaus/tree/master/embedded/sketches) directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) in the docs section.
 * Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
 
   
@@ -34,7 +34,7 @@ Configures the specified pin to behave either as an input or an output
 // Sets pin 6 mode to OUTPUT.  
 pinMode('468792', 6, 'o')  
 ```  
-* https://www.baldengineer.com/when-to-use-arduinos-pinmode-and-why.html  
+⚠️ https://www.baldengineer.com/when-to-use-arduinos-pinmode-and-why.html  
 ___
 ### digitalWrite()  
 ```  
