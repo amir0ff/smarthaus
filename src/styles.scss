@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300:400');
+@import "~bootstrap/scss/bootstrap";
+@import 'assets/styles/scrollbar';
+@import 'assets/styles/snackbar';
+
+$font-size: 1rem;
+$navbar-height: 50px;
+
+html {
+  height: 100%;
+  background: #306bbb; // Fallback for old browsers
+  background: linear-gradient(to top, #3a6073, #306bbb);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: $font-size;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: $info;
+  color: #fff;
+}
+
+@include scrollbar(8px, #6c757d, #dcdcdc);
+
+// Bootstrap overrides
+.container-fluid {
+  position: absolute;
+  margin: calc(#{$navbar-height} + 16px) 0 16px 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.dropdown-menu {
+  .dropdown-item {
+    font-size: $font-size;
+    &:active {
+      background-color: $info;
+    }
+    &:hover {
+      background-color: #e9e9e9;
+    }
+  }
+}
+
+.badge {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.custom-select-sm {
+  font-size: 96%;
+}
+
+.btn {
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-primary {
+  $btn-primary-color: darken($primary, 8%);
+  box-shadow: 0 2px 0 0 $btn-primary-color;
+  transition: 0.30s ease-in-out;
+  will-change: transform;
+  &:active {
+    box-shadow: 0 1px 0 0 darken($btn-primary-color, 8%);
+  }
+  &:focus, &.disabled, &:disabled {
+    box-shadow: none;
+    transform: translate(0px, 2px);
+  }
+  &.disabled, &:disabled {
+    opacity: 0.55;
+  }
+}
+
+.btn-secondary {
+  &:not(.search-btn) {
+    $btn-secondary-color: darken($secondary, 8%);
+    box-shadow: 0 2px 0 0 $btn-secondary-color;
+    transition: 0.30s ease-in-out;
+    will-change: transform;
+    &:active {
+      box-shadow: 0 1px 0 0 darken($btn-secondary-color, 8%);
+    }
+    &:focus, &.disabled, &:disabled {
+      box-shadow: none;
+      transform: translate(0px, 2px);
+    }
+  }
+}
+
+.btn-info {
+  $btn-info-color: darken($info, 8%);
+  box-shadow: 0 2px 0 0 $btn-info-color;
+  transition: 0.30s ease-in-out;
+  will-change: transform;
+  &:active {
+    box-shadow: 0 1px 0 0 darken($btn-info-color, 8%);
+  }
+  &:focus, &.disabled, &:disabled {
+    box-shadow: none;
+    transform: translate(0px, 2px);
+  }
+}
+
+.btn-success {
+  $btn-success-color: darken($success, 8%);
+  box-shadow: 0 2px 0 0 $btn-success-color;
+  transition: 0.30s ease-in-out;
+  will-change: transform;
+  &:active {
+    box-shadow: 0 1px 0 0 darken($btn-success-color, 8%);
+  }
+  &:focus, &.disabled, &:disabled {
+    box-shadow: none;
+    transform: translate(0px, 2px);
+  }
+}
+
+.btn-danger {
+  $btn-danger-color: darken($danger, 8%);
+  box-shadow: 0 2px 0 0 $btn-danger-color;
+  transition: 0.30s ease-in-out;
+  will-change: transform;
+  &:active {
+    box-shadow: 0 1px 0 0 darken($btn-danger-color, 8%);
+  }
+  &:focus, &.disabled, &:disabled {
+    box-shadow: none;
+    transform: translate(0px, 2px);
+  }
+}
+
+.modal-content {
+  .modal-footer {
+    .btn-save {
+      min-width: 63px;
+    }
+  }
+}

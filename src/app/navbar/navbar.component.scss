@@ -1,0 +1,27 @@
+$navbar-height: 50px;
+
+.navbar {
+  padding: 0 16px;
+  height: $navbar-height;
+  .navbar-brand {
+    img {
+      width: 34px;
+    }
+  }
+  .navbar-collapse {
+    height: 100%;
+    ul {
+      height: 100%;
+      li {
+        padding: 7px 0;
+        &.active {
+          background: #306bbb linear-gradient(to bottom, #3a71b0, #306bbb);
+        }
+      }
+    }
+  }
+  .search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

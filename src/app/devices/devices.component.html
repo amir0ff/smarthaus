@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <!-- Button trigger modal -->
+  <div id="snackbar" role="alert"></div>
+  <button type="button" class="btn btn-secondary btn-sm mb-3" data-toggle="modal" data-target="#addDeviceModal">
+    <fa-icon icon="plus"></fa-icon>
+    Add Device
+  </button>
+  <!-- Add device modal -->
+  <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Add Device</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form #deviceAddForm="ngForm" (ngSubmit)="addDevice(deviceAddForm)" novalidate>
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="address" class="col-sm-2 col-form-label">Address</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control rounded-0" id="address" name="address" ngModel
+                       required #addres="ngModel" placeholder="Device IP address">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+            <button [disabled]="deviceAddForm.invalid || isAdding" type="submit" class="btn btn-primary btn-sm btn-save">
+              <fa-icon *ngIf="isAdding" icon="sync-alt" [spin]="true" size="sm"></fa-icon>
+              <span *ngIf="!isAdding">Save</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Devices list -->
+  <div class="devices-container no-gutters">
+    <!-- Device component -->
+    <app-device class="no-gutters" [registeredDevices]="registeredDevices" [isLoading]="isLoading"></app-device>
+    <!-- Empty devices/adding devices container -->
+    <div class="row align-items-center no-gutters col-lg-5 col-sm-12">
+      <div *ngIf="registeredDevices.length === 0"
+           class="device-container row no-gutters align-items-center col-12">
+
+        <span *ngIf="!isAdding && !isLoading">No devices found.</span>
+        <span *ngIf="isAdding || isLoading">
+          <fa-icon icon="spinner" [spin]="true" size="lg"></fa-icon>
+        </span>
+
+      </div>
+      <div *ngIf="registeredDevices.length >= 1 && isAdding"
+           class="device-container row no-gutters align-items-center col-12">
+
+        <fa-icon icon="spinner" [spin]="true" size="lg"></fa-icon>
+
+      </div>
+    </div>
+  </div>
+</div>
+<pre [hidden]="true" style="margin-left: 50%;">{{registeredDevices | json}}</pre>

@@ -1,0 +1,22 @@
+.devices-container {
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  margin: 46px 16px 0 16px;
+  .device-container {
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.75);
+    background-color: #343a40;
+    color: white;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    min-height: 4rem;
+    padding: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 0.97rem;
+    transition: all 0.45s ease-out;
+  }
+}

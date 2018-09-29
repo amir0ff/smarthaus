@@ -1,0 +1,27 @@
+@mixin scrollbar($size, $foreground-color, $background-color) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+    @include media-breakpoint-down(md) {
+      width: calc(#{$size} / 2);
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    &:window-inactive {
+      background: rgba($foreground-color, 0.5);
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For IE
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

@@ -1,0 +1,29 @@
+.widget {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  .card {
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.75);
+    .card-header {
+      user-select: none;
+    }
+    .card-body {
+      font-size: 0.97rem;
+    }
+    .badge {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      cursor: help;
+    }
+    .spinner-icon {
+      position: absolute;
+      right: 11px;
+      top: 5px;
+      cursor: help;
+    }
+    .sync-btn {
+      min-width: 48px;
+    }
+  }
+}

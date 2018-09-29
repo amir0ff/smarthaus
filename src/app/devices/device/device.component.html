@@ -1,0 +1,26 @@
+<div *ngFor="let device of registeredDevices" class="row align-items-center no-gutters col-lg-5 col-sm-12">
+      <span *ngIf="!isLoading">
+      <span *ngIf="device.connected" class="badge badge-success" data-toggle="tooltip" data-placement="top"
+            title="Device is connected">
+            <fa-icon icon="signal" size="m"></fa-icon>
+          </span>
+      <span *ngIf="!device.connected" [ngClass]="{opaque: !device.connected}" class="badge badge-danger"
+            data-toggle="tooltip" data-placement="top"
+            title="Device is not connected!">
+            <fa-icon icon="signal" size="m"></fa-icon>
+          </span>
+    </span>
+  <div class="device-container row no-gutters align-items-center col-12" [ngClass]="{blur: device['disconnected']}">
+      <span *ngIf="isLoading">
+        <fa-icon icon="spinner" [spin]="true" size="lg"></fa-icon>
+      </span>
+    <div *ngIf="!isLoading">
+      <fa-icon icon="microchip" size="lg" class="mr-lg-2 mr-1"></fa-icon>
+      <span class="device-type mr-lg-3 mr-2" data-toggle="tooltip" data-placement="top"
+            title="Device type"> {{device.hardware}} </span>
+      <fa-icon icon="address-card" size="lg" class="mr-lg-2 mr-1"></fa-icon>
+      <span class="device-name mr-lg-3 mr-2" data-toggle="tooltip" data-placement="top"
+            title="Device name"> {{device.name}} </span>
+    </div>
+  </div>
+</div>
