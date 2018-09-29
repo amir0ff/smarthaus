@@ -176,7 +176,7 @@ More about the Arduino programming language can be found [here](https://www.ardu
 
 ___
 ### To-Do List  
-- [ ] Add Raspberry Pi support  
+- [ ] Add Raspberry Pi control support  
 - [ ] Add SSL on Node.js server  
-- [ ] Add webhook deployment to the Raspberry Pi from a remote repository  
+- [ ] Add CI/CD deployment to the Raspberry Pi from a remote repository  
 - [ ] Add dynamic dashboard
