@@ -144,8 +144,8 @@ The library is published under the same licence of aREST.
 
 ##### Initializes a variable and exposes it to RESTful API  
 ```  
-int variable;  
-rest.variable("variable name", &variable);  
+int temperature;  
+rest.variable("variable name", &temperature);  
 ```  
   
 ##### Sets a name for the device  
