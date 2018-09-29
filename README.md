@@ -12,11 +12,11 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 5. 👍 ****Simple****: No need for external MQTT broker configurations   
   
 ## Setup  
-* On your device, upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) docs section.
+* On your device, upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) in the docs section.
 * Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
 
   
-## 📖 Client API:  
+## 📄 Client API:  
 The API is similar to the official [Arduino](https://www.arduino.cc/reference/en/#functions) with Analog & Digital I/O functions except for the ```callFunction()``` and the ```getVariable()``` functions.  
   
   
@@ -137,7 +137,7 @@ Executes a pre-defined function on the device
 callFunction('468792', 'turn_on_led', '1')  
 ```  
 ___
-## 📖 Embedded API:  
+## 📄 Embedded API:  
 The corresponding Arduino library "Restfulino" was forked from the [aREST](https://github.com/marcoschwartz/aREST) library.  
 The changes made in this version were necessary in order to disconnect the library from the centralized private aREST MQTT broker since this system doesn't rely on MQTT. Other minor tweaks were also applied.
 The library is published under the same licence of aREST.
