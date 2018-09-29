@@ -32,7 +32,7 @@ Configures the specified pin to behave either as an input or an output
 // Sets pin 6 mode to OUTPUT.  
 pinMode('468792', 6, 'o')  
 ```  
->https://www.baldengineer.com/when-to-use-arduinos-pinmode-and-why.html  
+* https://www.baldengineer.com/when-to-use-arduinos-pinmode-and-why.html  
 ___
 ### digitalWrite()  
 ```  
