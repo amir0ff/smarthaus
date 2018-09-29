@@ -3,7 +3,5 @@ language: node_js
 node_js:
 - node
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: $HEROKU_TOKEN
+script:	
+- ng build --prod
