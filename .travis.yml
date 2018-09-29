@@ -4,7 +4,7 @@ node_js:
 - node
 
 script:
-- ng build --prod
+- ng lint
 
 deploy:
   provider: heroku
