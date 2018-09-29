@@ -12,17 +12,11 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 # Installation  
 **Step One:**
 
-Upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project.
-After uploading the sketch get the IP address from the serial monitor, enter it in your browser  
-and you should receive something like this:
-```  
-{"variables": {}, "id": "468792", "name": "Bedroom LEDs", "hardware": "esp8266", "connected": true}  
-```  
-It should return a JSON body with all the device data.  
+Upload one of the required Arduino example sketches that are available in the 'embedded/sketches/' directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) docs section.
 
 **Step Two:**
 
-Set up the system on a Raspberry Pi. For the installation guide click [here](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29).
+Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) that's published on Medium.
 
   
 # 📄Client API:  
@@ -149,8 +143,8 @@ ___
 # 📄Embedded API:  
 The corresponding Arduino library "Restfulino" was forked from the [aREST](https://github.com/marcoschwartz/aREST) library.  
 The changes made in this version were necessary in order to disconnect the library from the centralized private aREST MQTT broker since this system doesn't rely on MQTT. Other minor tweaks were also applied.
-The library is published under the same licence of aREST.  
-  
+The library is published under the same licence of aREST.
+
 ##### Initializes a variable and exposes it to RESTful API  
 ```  
 int variable;  
@@ -172,8 +166,13 @@ The ID should be 6 characters long (will be automatically generated if not set)
 ```  
 rest.handle(client);  
 ```  
-More about the Arduino programming language can be found [here](https://www.arduino.cc/reference/en/language/structure/sketch/setup/).  
 
+After uploading the sketch using the Arduino IDE, get the IP address from the serial monitor, enter it in your browser  
+and you should receive something like this:
+```  
+{"variables": {}, "id": "468792", "name": "Weather Station", "hardware": "esp8266", "connected": true}  
+```  
+It should return a JSON body with all the device data.  
 ___
 ### To-Do List  
 - [ ] Add Raspberry Pi control support  
