@@ -22,7 +22,7 @@ It should return a JSON body with all the device data.
 
 **Step Two:**
 
-Set up the system on a Raspberry Pi.
+Set up the system on a Raspberry Pi. For the installation guide click [here](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29).
 
   
 # 📄Client API:  
