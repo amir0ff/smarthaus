@@ -169,7 +169,7 @@ and you should receive something like this:
 ```  
 It should return a JSON body with all the device data.  
 ___
-### To-Do List  
+### 📑To-Do List  
 - [ ] Add Raspberry Pi control support  
 - [ ] Add SSL on Node.js server  
 - [ ] Add CI/CD deployment to the Raspberry Pi from a remote repository  
