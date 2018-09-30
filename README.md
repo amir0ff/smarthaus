@@ -10,7 +10,7 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 1. ⚡ ****Robust****: Full JavaScript stack with Angular and Node.js  
 3. 👌 ****Convenient****: Operates from your local network where your IoT devices live  
 4. 🔐 ****Secure****: It's centralized in your network and does not require an external "cloud" server  
-5. 👍 ****Simple****: No need for external MQTT broker configurations   
+5. 👍 ****Simple****: No need for external MQTT broker configurations. It's fully RESTful!
   
 ## Setup
 * On your device, upload one of the required Arduino example sketches that are available in the [sketches](https://github.com/ameer157/smarthaus/tree/master/embedded/sketches) directory of this project. Please refer to the [Embeded API](https://github.com/ameer157/smarthaus#embedded-api) in the docs section.
