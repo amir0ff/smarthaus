@@ -5,7 +5,8 @@
 
 Smart Haus is a home automation system for building real-time dashboards for monitoring and controlling IoT devices. It works with microcontrollers like the Arduino Uno/Mega/Duo and the ESP8266 or ESP32.  
 Built with Angular on the client-side and Node.js on the server-side and communicates via a RESTful API.  
-  
+
+![](https://miro.medium.com/fit/c/1400/420/1*ekrneFlaBAAqotbwcJ0pDA.png)
 #### Superpowers:  
 1. ⚡ ****Robust****: Full JavaScript stack with Angular and Node.js  
 3. 👌 ****Convenient****: Operates from your local network where your IoT devices live  
@@ -17,7 +18,7 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 * Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@ameer157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
 
   
-## 📄 Client API Reference
+## Client API
 The API is similar to the official [Arduino](https://www.arduino.cc/reference/en/#functions) with Analog & Digital I/O functions except for the ```callFunction()``` and the ```getVariable()``` functions.  
   
   
@@ -138,7 +139,7 @@ Executes a pre-defined function on the device
 callFunction('468792', 'turn_on_led', '1')  
 ```  
 ___
-## 📄 Embedded API Reference 
+## Embedded API
 The corresponding Arduino library "Restfulino" was forked from the [aREST](https://github.com/marcoschwartz/aREST) library.  
 The changes made in this version were necessary in order to disconnect the library from the centralized private aREST MQTT broker since this system doesn't rely on MQTT. Other minor tweaks were also applied.
 The library is published under the same licence of aREST.
@@ -177,7 +178,8 @@ ___
 - [ ] Add SSL on Node.js server  
 - [ ] Add CI/CD deployment to the Raspberry Pi from a remote repository  
 - [ ] Add dynamic dashboard
-___
+
+
 
 ## License
 Smart Haus is licensesd under the [GPL-3.0](https://github.com/ameer157/smarthaus/blob/master/LICENSE) license.
