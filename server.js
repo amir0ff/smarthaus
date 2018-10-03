@@ -1,6 +1,5 @@
 // Importing dependencies
 const express = require('express');
-const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
@@ -29,16 +28,13 @@ app.use(cors(corsOptions));
 // Use body parser for incoming  request
 app.use(bodyParser.json());
 
+// Serve static files form the dist directory
+app.use(express.static(path.join(__dirname, 'dist/smarthaus')));
+app.use('/', express.static(path.join(__dirname, 'dist/smarthaus')));
+
 // Import API routes and functions
 const routes = require('./backend');
-app.use('/', routes);
-
-// Serve static files form the dist directory
-app.use(express.static('dist/smarthaus'));
-app.use(favicon(path.join(__dirname, 'dist/smarthaus', 'favicon.ico')));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/smarthaus/index.html'));
-});
+app.use('/api', routes);
 
 // Fire up the Node.js server
 app.listen(port, () => {
