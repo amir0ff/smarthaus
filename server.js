@@ -9,10 +9,11 @@ const port = process.env.PORT || 80;
 
 // Navigating to the directory where the server.js lives
 process.chdir(__dirname);
-/* This is important when running node from
-   outside the directory, like  on the
-   Raspberry Pi startup so that it doesn't
-   break the "__dirname" path structure */
+/*
+   This is important when running node from outside the directory,
+   like  on the Raspberry Pi startup script so that it doesn't
+   break the "__dirname" path structure
+*/
 
 // Configure CORS headers
 const corsOptions = {

@@ -11,7 +11,7 @@
 
 
 // Importing dependencies
-const routes = require('express').Router();
+const router = require('express').Router();
 const request = require('request');
 
 /* Registered devices are non-persistent and
@@ -128,7 +128,7 @@ class Device {
   };
 }
 
-routes.post('/api/add/device/', function (req, res) {
+router.post('/api/add/device/', function (req, res) {
   let new_device = new Device();
   new_device.type = req.body.type;
   new_device.address = req.body.address;
@@ -157,7 +157,7 @@ routes.post('/api/add/device/', function (req, res) {
 });
 
 // Return all devices
-routes.get('/api/devices', function (req, res) {
+router.get('/api/devices', function (req, res) {
   let simple_devices = [];
   for (let i = 0; i < database.devices.length; i++) {
     let simple_device = {};
@@ -172,7 +172,7 @@ routes.get('/api/devices', function (req, res) {
 });
 
 // Return a specific device
-routes.get('/api/:device', function (req, res) {
+router.get('/api/:device', function (req, res) {
   console.log('Sync request sent to device: ' + req.params.device);
   let device = database.getDevice(req.params.device);
   if (typeof(device) !== 'undefined') {
@@ -186,7 +186,7 @@ routes.get('/api/:device', function (req, res) {
 });
 
 // Execute a function
-routes.get('/api/:device/:command', function (req, res) {
+router.get('/api/:device/:command', function (req, res) {
   // Get device
   let device = database.getDevice(req.params.device);
   if (typeof(device) !== 'undefined') {
@@ -209,7 +209,7 @@ routes.get('/api/:device/:command', function (req, res) {
 });
 
 // Digital write
-routes.get('/api/:device/digital/:pin/:value', function (req, res) {
+router.get('/api/:device/digital/:pin/:value', function (req, res) {
   console.log('Digital write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -225,7 +225,7 @@ routes.get('/api/:device/digital/:pin/:value', function (req, res) {
 });
 
 // Analog read
-routes.get('/api/:device/analog/:pin/', function (req, res) {
+router.get('/api/:device/analog/:pin/', function (req, res) {
   console.log('Analog read request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -236,7 +236,7 @@ routes.get('/api/:device/analog/:pin/', function (req, res) {
 });
 
 // Analog write
-routes.get('/api/:device/analog/:pin/:value', function (req, res) {
+router.get('/api/:device/analog/:pin/:value', function (req, res) {
   console.log('Analog write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -247,7 +247,7 @@ routes.get('/api/:device/analog/:pin/:value', function (req, res) {
 });
 
 // Digital read
-routes.get('/api/:device/digital/:pin/', function (req, res) {
+router.get('/api/:device/digital/:pin/', function (req, res) {
   console.log('Digital read request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -258,7 +258,7 @@ routes.get('/api/:device/digital/:pin/', function (req, res) {
 });
 
 // Pin mode
-routes.get('/api/:device/mode/:pin/:value', function (req, res) {
+router.get('/api/:device/mode/:pin/:value', function (req, res) {
   console.log('Pin mode request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -269,4 +269,4 @@ routes.get('/api/:device/mode/:pin/:value', function (req, res) {
 });
 
 // Exporting routs to to Node.js
-module.exports = routes;
+module.exports = router;
