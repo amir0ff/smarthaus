@@ -1,5 +1,6 @@
 // Importing dependencies
 const express = require('express');
+const routes = require('./backend');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
@@ -28,13 +29,15 @@ app.use(cors(corsOptions));
 // Use body parser for incoming  request
 app.use(bodyParser.json());
 
+// Import API routes
+app.use('/api', routes);
+
 // Serve static files form the dist directory
 app.use(express.static(path.join(__dirname, 'dist/smarthaus')));
-app.use('/', express.static(path.join(__dirname, 'dist/smarthaus')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/smarthaus/index.html'));
+});
 
-// Import API routes and functions
-const routes = require('./backend');
-app.use('/api', routes);
 
 // Fire up the Node.js server
 app.listen(port, () => {
