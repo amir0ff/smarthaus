@@ -34,10 +34,7 @@ app.use('/api', routes);
 
 // Serve static files form the dist directory
 app.use(express.static(path.join(__dirname, 'dist/smarthaus')));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/smarthaus/index.html'));
-});
-
+app.use('/*', express.static(path.join(__dirname, 'dist/smarthaus')));
 
 // Fire up the Node.js server
 app.listen(port, () => {
