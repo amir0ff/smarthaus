@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DeviceService } from './device.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { SnackbarUiService } from '../shared/snackbar-ui.service';
 import { Device } from './device/device.model';
@@ -27,12 +27,6 @@ export class DevicesComponent implements OnInit, OnDestroy {
     this.syncDevice();
   }, 10000);
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    })
-  };
 
   ngOnInit() {
     this.getDevices();
@@ -65,7 +59,7 @@ export class DevicesComponent implements OnInit, OnDestroy {
         return;
       }
     }
-    this.http.post(environment.apiEntryPoint + 'add/device', deviceAddForm.value, this.httpOptions).subscribe((res) => {
+    this.http.post(environment.apiEntryPoint + 'add/device', deviceAddForm.value).subscribe((res) => {
       const newDevice: any = {};
       newDevice.address = deviceAddForm.value.address;
       // Fetch device ID from POST request returned response
