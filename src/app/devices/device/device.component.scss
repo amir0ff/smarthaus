@@ -1,6 +1,6 @@
 .device-container {
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.75);
-  background-color: rgba(52, 58, 64, 0.80);
+  background-color: rgba(52, 58, 64, 0.85);
   color: white;
   border-radius: 4px;
   margin-bottom: 16px;
@@ -10,6 +10,9 @@
   font-weight: 300;
   font-size: 0.97rem;
   transition: all 0.30s ease-out;
+  &:hover {
+    background-color: rgba(52, 58, 64, 1);
+  }
   span, fa-icon {
     transition: all 0.30s ease-out;
   }
@@ -20,6 +23,9 @@
     //animation: wobble 0.4s ease-in 1;
     span, fa-icon {
       opacity: 0.70;
+    }
+    &:hover {
+      background-color: rgba(52, 58, 64, 0.85);
     }
   }
   .device-type, .device-name, .device-connection {
