@@ -1,6 +1,6 @@
 .device-container {
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.75);
-  background-color: rgba(52, 58, 64, 0.85);
+  background-color: rgba(52, 58, 64, 0.80);
   color: white;
   border-radius: 4px;
   margin-bottom: 16px;
@@ -18,14 +18,12 @@
   }
   &.blur {
     filter: blur(1.3px);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.75);
     border-radius: 5px;
+    background-color: rgba(52, 58, 64, 1);
     //animation: wobble 0.4s ease-in 1;
     span, fa-icon {
       opacity: 0.70;
-    }
-    &:hover {
-      background-color: rgba(52, 58, 64, 0.85);
     }
   }
   .device-type, .device-name, .device-connection {
