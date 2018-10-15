@@ -176,7 +176,7 @@ ___
 ## 📑To-Do List  
 - [ ] Add Raspberry Pi control support  
 - [ ] Add SSL on Node.js server
-- [x] Add JWT authentication on client an server
+- [x] Add JWT authentication for client and server HTTP requests
 - [ ] Add CI/CD deployment to the Raspberry Pi from a remote repository  
 - [ ] Add dynamic dashboard
 
