@@ -59,20 +59,19 @@ export class DevicesComponent implements OnInit, OnDestroy {
         return;
       }
     }
-    this.http.post(environment.apiEntryPoint + 'add/device', deviceAddForm.value).subscribe((res) => {
-      const newDevice: any = {};
-      newDevice.address = deviceAddForm.value.address;
+    this.http.post(environment.apiEntryPoint + 'add', deviceAddForm.value).subscribe((res) => {
+      const new_device: any = {};
+      new_device.address = deviceAddForm.value.address;
       // Fetch device ID from POST request returned response
-      newDevice.id = res['id'];
+      new_device.id = res['id'];
       // Sync device data
-      this.http.get(environment.apiEntryPoint + newDevice.id).subscribe((data: Device) => {
-        console.log(data);
+      this.http.get(environment.apiEntryPoint + new_device.id).subscribe((data: Device) => {
         if (data) {
-          newDevice.name = data.name;
-          newDevice.connected = data.connected;
-          newDevice.hardware = data.hardware;
+          new_device.name = data.name;
+          new_device.connected = data.connected;
+          new_device.hardware = data.hardware;
           // Add new device to registered devices list
-          this.registeredDevices.push(newDevice);
+          this.registeredDevices.push(new_device);
           this.isAdding = false;
           $('#addDeviceModal').modal('hide');
         }

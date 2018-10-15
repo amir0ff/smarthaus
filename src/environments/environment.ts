@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEntryPoint: '/api/'
-  // apiEntryPoint: 'http://localhost/api/'
+  apiEntryPoint: 'http://localhost:3000/api/'
+  // apiEntryPoint: 'http://localhost:3000/api/'
 };
 
 /*

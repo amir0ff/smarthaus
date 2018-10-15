@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeviceService } from './devices/device.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,10 +12,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WidgetComponent } from './dashboard/widget/widget.component';
 import { FontsModule } from './fonts.module';
 import { SnackbarUiService } from './shared/snackbar-ui.service';
+import { AuthenticationService } from './auth/authentication.service';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { AuthGuard } from './auth/auth.guard';
+import { HttpErrorInterceptor } from './auth/http-error.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SignUpComponent,
+    SignInComponent,
     DevicesComponent,
     DeviceComponent,
     DashboardComponent,
@@ -29,7 +36,11 @@ import { SnackbarUiService } from './shared/snackbar-ui.service';
     HttpClientModule,
     FontsModule
   ],
-  providers: [DeviceService, SnackbarUiService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }, AuthGuard, AuthenticationService, DeviceService, SnackbarUiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

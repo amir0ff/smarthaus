@@ -11,7 +11,10 @@ import {
   faThermometerHalf,
   faSyncAlt,
   faAddressCard,
-  faInfoCircle
+  faInfoCircle,
+  faSignOutAlt,
+  faSignInAlt,
+  faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -24,7 +27,10 @@ library.add(
   faThermometerHalf,
   faSyncAlt,
   faAddressCard,
-  faInfoCircle
+  faInfoCircle,
+  faSignOutAlt,
+  faSignInAlt,
+  faEnvelope
 );
 
 @NgModule({

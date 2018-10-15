@@ -13,6 +13,7 @@
 // Importing dependencies
 const router = require('express').Router();
 const request = require('request');
+const userCtrl = require('../controllers/user.controller');
 
 /* Registered devices are non-persistent and
    live as long as the Node.js process is running */
@@ -31,10 +32,8 @@ class Device {
   constructor() {
     this.type = "";
     this.address = "";
-    this.speed = 0;
     this.name = "";
     this.id = "";
-    this.message = {};
   }
 
   getDevice(callback) {
@@ -128,7 +127,11 @@ class Device {
   };
 }
 
-router.post('/add/device/', function (req, res) {
+router.post('/register', userCtrl.register);
+router.post('/authenticate', userCtrl.authenticate);
+router.get('/user', userCtrl.verifyToken, userCtrl.getProfile);
+
+router.post('/add', userCtrl.verifyToken, function (req, res) {
   let new_device = new Device();
   new_device.type = req.body.type;
   new_device.address = req.body.address;
@@ -146,7 +149,6 @@ router.post('/add/device/', function (req, res) {
         database.devices.push(new_device);
         // Send response headers back to client
         res.status(200).json({
-          'address': 'req.body.address',
           'id': body.id
         });
         console.log("Device added with ID: " + body.id);
@@ -157,7 +159,7 @@ router.post('/add/device/', function (req, res) {
 });
 
 // Return all devices
-router.get('/devices', function (req, res) {
+router.get('/devices', userCtrl.verifyToken, function (req, res) {
   let simple_devices = [];
   for (let i = 0; i < database.devices.length; i++) {
     let simple_device = {};
@@ -172,7 +174,7 @@ router.get('/devices', function (req, res) {
 });
 
 // Return a specific device
-router.get('/:device', function (req, res) {
+router.get('/:device', userCtrl.verifyToken, function (req, res) {
   console.log('Sync request sent to device: ' + req.params.device);
   let device = database.getDevice(req.params.device);
   if (typeof(device) !== 'undefined') {
@@ -186,7 +188,7 @@ router.get('/:device', function (req, res) {
 });
 
 // Execute a function
-router.get('/:device/:command', function (req, res) {
+router.get('/:device/:command', userCtrl.verifyToken, function (req, res) {
   // Get device
   let device = database.getDevice(req.params.device);
   if (typeof(device) !== 'undefined') {
@@ -209,7 +211,7 @@ router.get('/:device/:command', function (req, res) {
 });
 
 // Digital write
-router.get('/:device/digital/:pin/:value', function (req, res) {
+router.get('/:device/digital/:pin/:value', userCtrl.verifyToken, function (req, res) {
   console.log('Digital write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -225,7 +227,7 @@ router.get('/:device/digital/:pin/:value', function (req, res) {
 });
 
 // Analog read
-router.get('/:device/analog/:pin/', function (req, res) {
+router.get('/:device/analog/:pin/', userCtrl.verifyToken, function (req, res) {
   console.log('Analog read request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -236,7 +238,7 @@ router.get('/:device/analog/:pin/', function (req, res) {
 });
 
 // Analog write
-router.get('/:device/analog/:pin/:value', function (req, res) {
+router.get('/:device/analog/:pin/:value', userCtrl.verifyToken, function (req, res) {
   console.log('Analog write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -247,7 +249,7 @@ router.get('/:device/analog/:pin/:value', function (req, res) {
 });
 
 // Digital read
-router.get('/:device/digital/:pin/', function (req, res) {
+router.get('/:device/digital/:pin/', userCtrl.verifyToken, function (req, res) {
   console.log('Digital read request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -258,7 +260,7 @@ router.get('/:device/digital/:pin/', function (req, res) {
 });
 
 // Pin mode
-router.get('/:device/mode/:pin/:value', function (req, res) {
+router.get('/:device/mode/:pin/:value', userCtrl.verifyToken, function (req, res) {
   console.log('Pin mode request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
