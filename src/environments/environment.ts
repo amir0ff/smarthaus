@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEntryPoint: 'http://localhost:3000/api/'
+  apiEntryPoint: '/api/'
   // apiEntryPoint: 'http://localhost:3000/api/'
 };
 
