@@ -46,7 +46,7 @@ module.exports.getProfile = (req, res, next) => {
   );
 };
 
-module.exports.verifyToken = (req, res, next) => {
+module.exports.verifyJWT = (req, res, next) => {
   let token;
   if ('authorization' in req.headers)
     token = req.headers['authorization'].split(' ')[1];

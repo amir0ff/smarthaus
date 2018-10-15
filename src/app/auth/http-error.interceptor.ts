@@ -21,13 +21,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         tap(
           event => {
             if (event['status'] === 200) {
-              // console.log('Valid token found', event);
+              // console.log('Valid token found!', event);
               next.handle(clonedreq);
             }
           },
           err => {
             if (err.error.auth === false) {
-              // console.log('Not valid token provided', err);
+              // console.log('No valid token provided!', err);
               return;
             }
           })

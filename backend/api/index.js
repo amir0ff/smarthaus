@@ -127,11 +127,11 @@ class Device {
   };
 }
 
-router.post('/signup', userCtrl.verifyToken, userCtrl.signup);
 router.post('/signin', userCtrl.signin);
-router.get('/user', userCtrl.verifyToken, userCtrl.getProfile);
+router.post('/signup', userCtrl.verifyJWT, userCtrl.signup);
+router.get('/user', userCtrl.verifyJWT, userCtrl.getProfile);
 
-router.post('/add', userCtrl.verifyToken, function (req, res) {
+router.post('/add', userCtrl.verifyJWT, function (req, res) {
   let new_device = new Device();
   new_device.type = req.body.type;
   new_device.address = req.body.address;
@@ -159,7 +159,7 @@ router.post('/add', userCtrl.verifyToken, function (req, res) {
 });
 
 // Return all devices
-router.get('/devices', userCtrl.verifyToken, function (req, res) {
+router.get('/devices', userCtrl.verifyJWT, function (req, res) {
   let simple_devices = [];
   for (let i = 0; i < database.devices.length; i++) {
     let simple_device = {};
@@ -174,7 +174,7 @@ router.get('/devices', userCtrl.verifyToken, function (req, res) {
 });
 
 // Return a specific device
-router.get('/:device', userCtrl.verifyToken, function (req, res) {
+router.get('/:device', userCtrl.verifyJWT, function (req, res) {
   console.log('Sync request sent to device: ' + req.params.device);
   let device = database.getDevice(req.params.device);
   if (typeof(device) !== 'undefined') {
@@ -188,7 +188,7 @@ router.get('/:device', userCtrl.verifyToken, function (req, res) {
 });
 
 // Execute a function
-router.get('/:device/:command', userCtrl.verifyToken, function (req, res) {
+router.get('/:device/:command', userCtrl.verifyJWT, function (req, res) {
   // Get device
   let device = database.getDevice(req.params.device);
   if (typeof(device) !== 'undefined') {
@@ -211,7 +211,7 @@ router.get('/:device/:command', userCtrl.verifyToken, function (req, res) {
 });
 
 // Digital write
-router.get('/:device/digital/:pin/:value', userCtrl.verifyToken, function (req, res) {
+router.get('/:device/digital/:pin/:value', userCtrl.verifyJWT, function (req, res) {
   console.log('Digital write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -227,7 +227,7 @@ router.get('/:device/digital/:pin/:value', userCtrl.verifyToken, function (req, 
 });
 
 // Analog read
-router.get('/:device/analog/:pin/', userCtrl.verifyToken, function (req, res) {
+router.get('/:device/analog/:pin/', userCtrl.verifyJWT, function (req, res) {
   console.log('Analog read request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -238,7 +238,7 @@ router.get('/:device/analog/:pin/', userCtrl.verifyToken, function (req, res) {
 });
 
 // Analog write
-router.get('/:device/analog/:pin/:value', userCtrl.verifyToken, function (req, res) {
+router.get('/:device/analog/:pin/:value', userCtrl.verifyJWT, function (req, res) {
   console.log('Analog write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -249,7 +249,7 @@ router.get('/:device/analog/:pin/:value', userCtrl.verifyToken, function (req, r
 });
 
 // Digital read
-router.get('/:device/digital/:pin/', userCtrl.verifyToken, function (req, res) {
+router.get('/:device/digital/:pin/', userCtrl.verifyJWT, function (req, res) {
   console.log('Digital read request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
@@ -260,7 +260,7 @@ router.get('/:device/digital/:pin/', userCtrl.verifyToken, function (req, res) {
 });
 
 // Pin mode
-router.get('/:device/mode/:pin/:value', userCtrl.verifyToken, function (req, res) {
+router.get('/:device/mode/:pin/:value', userCtrl.verifyJWT, function (req, res) {
   console.log('Pin mode request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);

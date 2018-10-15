@@ -12,18 +12,19 @@ export class AuthenticationService {
     password: ''
   };
 
+  // Bypassing the HTTP interceptor by sending pre-defined auth headers
   noAuthHeader = {headers: new HttpHeaders({'NoAuth': 'True'})};
 
   constructor(private http: HttpClient) {
   }
 
   // HTTP methods
-  signUp(user: User) {
-    return this.http.post(environment.apiEntryPoint + 'signup', user, this.noAuthHeader);
+  signIn(credentials) {
+    return this.http.post(environment.apiEntryPoint + 'signin', credentials, this.noAuthHeader);
   }
 
-  signIn(authCredentials) {
-    return this.http.post(environment.apiEntryPoint + 'signin', authCredentials, this.noAuthHeader);
+  signUp(user: User) {
+    return this.http.post(environment.apiEntryPoint + 'signup', user);
   }
 
   getUser() {
