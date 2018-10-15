@@ -19,11 +19,11 @@ export class AuthenticationService {
 
   // HTTP methods
   signUp(user: User) {
-    return this.http.post(environment.apiEntryPoint + 'register', user, this.noAuthHeader);
+    return this.http.post(environment.apiEntryPoint + 'signup', user, this.noAuthHeader);
   }
 
   signIn(authCredentials) {
-    return this.http.post(environment.apiEntryPoint + 'authenticate', authCredentials, this.noAuthHeader);
+    return this.http.post(environment.apiEntryPoint + 'signin', authCredentials, this.noAuthHeader);
   }
 
   getUser() {

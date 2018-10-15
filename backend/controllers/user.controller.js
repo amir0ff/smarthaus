@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 const User = mongoose.model('User');
 
-module.exports.register = (req, res, next) => {
+module.exports.signup = (req, res, next) => {
   let user = new User();
   user.fullName = req.body.fullName;
   user.email = req.body.email;
@@ -23,7 +23,7 @@ module.exports.register = (req, res, next) => {
   });
 };
 
-module.exports.authenticate = (req, res, next) => {
+module.exports.signin = (req, res, next) => {
   // call for passport authentication
   passport.authenticate('local', (err, user, info) => {
     // error from passport middleware

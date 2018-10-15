@@ -1,25 +1,22 @@
 // Set environment configurations
-
-/*
- Remember to keep your own JWT_SECRET keys private
-*/
+// Remember to keep your own JWT_SECRET keys private
 const config = {
   "development": {
     "PORT": 80,
     "MONGODB_URI": "mongodb://127.0.0.1:27017/smarthaus",
     "JWT_SECRET": "SECRET#123",
-    "JWT_EXP": "10m"
+    "JWT_EXP": "2h"
   },
   "production": {
     "PORT": 80,
     "MONGODB_URI": "mongodb://xxxxx/DB_Name",
     "JWT_SECRET": "SECRET#123",
-    "JWT_EXP": "10m"
+    "JWT_EXP": "2h"
   }
 };
 
 // Check process.env.NODE_ENV value if not set then default is 'development'
-/* For Production => process.env.NODE_ENV = 'production'; */
+// For Production => process.env.NODE_ENV = 'production';
 const env = process.env.NODE_ENV || 'development';
 // Get environment configurations
 const envConfig = config[env];
