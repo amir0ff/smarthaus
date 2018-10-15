@@ -127,7 +127,7 @@ class Device {
   };
 }
 
-router.post('/signup', userCtrl.signup);
+router.post('/signup', userCtrl.verifyToken, userCtrl.signup);
 router.post('/signin', userCtrl.signin);
 router.get('/user', userCtrl.verifyToken, userCtrl.getProfile);
 
