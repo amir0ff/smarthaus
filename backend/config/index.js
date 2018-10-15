@@ -6,7 +6,7 @@
 const config = {
   "development": {
     "PORT": 80,
-    "MONGODB_URI": "mongodb://localhost:27017/smarthaus",
+    "MONGODB_URI": "mongodb://127.0.0.1:27017/smarthaus",
     "JWT_SECRET": "SECRET#123",
     "JWT_EXP": "10m"
   },
