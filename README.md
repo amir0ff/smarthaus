@@ -8,7 +8,7 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 
 ![](https://miro.medium.com/fit/c/1400/420/1*ekrneFlaBAAqotbwcJ0pDA.png)
 #### Superpowers:  
-1. ⚡ ****Robust****: Full JavaScript stack with Angular and Node.js  
+1. ⚡ ****Robust****: Full JavaScript stack with Angular and Node.js with MongoDB database (MEAN Stack)
 3. 👌 ****Convenient****: Operates from your local network where your IoT devices live  
 4. 🔐 ****Secure****: It's centralized in your network and does not require an external "cloud" server  
 5. 👍 ****Simple****: No need for external MQTT broker configurations. It's fully RESTful!
