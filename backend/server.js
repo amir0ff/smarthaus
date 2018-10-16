@@ -1,6 +1,3 @@
-// Navigating to this directory
-process.chdir(__dirname);
-
 // Import database configurations
 require('./config');
 require('./model');
