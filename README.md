@@ -175,9 +175,10 @@ It should return a JSON body with all the device data.
 ___
 ## 📑To-Do List  
 - [ ] Add Raspberry Pi control support  
-- [ ] Add SSL on Node.js server
+- [ ] Add SSL Certificate on Node.js server
+- [ ] Enable HTTPS on MongoDB server
 - [x] Add JWT authentication for client and server HTTP requests
-- [ ] Add CI/CD deployment to the Raspberry Pi from a remote repository  
+- [ ] Add webhook deployment to the Raspberry Pi from a remote repository  
 - [ ] Add dynamic dashboard
 
 
