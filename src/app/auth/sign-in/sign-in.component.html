@@ -20,9 +20,12 @@
             <span *ngIf="password['errors']?.required">This field is required.</span>
           </div>
         </div>
-        <button type="submit" class="btn btn-info">
-          <fa-icon icon="sign-in-alt" class="mr-1"></fa-icon>
-          Log In
+        <button type="submit" class="btn btn-info" [disabled]="signingIn">
+          <fa-icon *ngIf="signingIn" icon="sync-alt" [spin]="true" size="sm"></fa-icon>
+          <ng-container *ngIf="!signingIn">
+            <fa-icon icon="sign-in-alt" class="mr-1"></fa-icon>
+            <span>Log In</span>
+          </ng-container>
         </button>
       </form>
       <!-- Error message -->

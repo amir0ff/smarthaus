@@ -10,6 +10,7 @@ import { SnackbarUiService } from '../../shared/snackbar-ui.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+  signingIn = false;
 
   constructor(private authService: AuthenticationService, private router: Router, private snackbar: SnackbarUiService) {
   }
@@ -21,13 +22,16 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    this.signingIn = true;
     this.authService.signIn(form.value).subscribe(
       res => {
+        this.signingIn = false;
         this.authService.setToken(res['token']);
         this.router.navigateByUrl('/');
       },
       err => {
-        this.snackbar.showSnackbar('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
+        this.signingIn = false;
+        this.snackbar.showSnackbar(err.error.message, 'alert-danger', 3500);
       }
     );
   }

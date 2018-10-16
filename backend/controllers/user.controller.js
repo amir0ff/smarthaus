@@ -30,7 +30,7 @@ module.exports.signin = (req, res, next) => {
     // Generate JWT for logged in user
     else if (user) return res.status(200).json({"token": user.generateJwt()});
     // Unknown user or wrong password response
-    else return res.status(404).json(info);
+    else return res.status(401).json(info);
   })(req, res);
 };
 
