@@ -12,6 +12,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
+const port = process.env.PORT || 80;
 const app = express();
 
 // Importing API routes
@@ -43,4 +44,4 @@ app.use(express.static(path.join(__dirname, '../dist/smarthaus')));
 app.use('/*', express.static(path.join(__dirname, '../dist/smarthaus')));
 
 // Fire up the Node.js server
-app.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
+app.listen(port, () => console.log(`Server started at port: ${port}`));
