@@ -9,7 +9,7 @@
   },
   "license": "GPL-3.0",
   "scripts": {
-    "start": "node server.js",
+    "start": "cd backend && node server.js",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
