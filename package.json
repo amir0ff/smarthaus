@@ -9,6 +9,7 @@
   },
   "license": "GPL-3.0",
   "scripts": {
+    "heroku-prebuild": "heroku config:set NPM_CONFIG_PRODUCTION=false",
     "start": "cd backend && node server.js",
     "serve": "ng serve",
     "build": "ng build",
