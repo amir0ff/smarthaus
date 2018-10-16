@@ -25,13 +25,12 @@ export class SignInComponent implements OnInit {
     this.signingIn = true;
     this.authService.signIn(form.value).subscribe(
       res => {
-        this.signingIn = false;
-        this.authService.setToken(res['token']);
+        this.authService.setJWT(res['token']);
         this.router.navigateByUrl('/');
       },
       err => {
         this.signingIn = false;
-        this.snackbar.showSnackbar(err.error.message, 'alert-danger', 3500);
+        this.snackbar.show(err.error.message, 'alert-danger', 3500);
       }
     );
   }

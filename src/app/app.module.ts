@@ -16,7 +16,7 @@ import { AuthenticationService } from './auth/authentication.service';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
-import { HttpErrorInterceptor } from './auth/http-error.interceptor';
+import { HttpJWTInterceptor } from './auth/http-jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { HttpErrorInterceptor } from './auth/http-error.interceptor';
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
-    useClass: HttpErrorInterceptor,
+    useClass: HttpJWTInterceptor,
     multi: true
   }, AuthGuard, AuthenticationService, DeviceService, SnackbarUiService],
   bootstrap: [AppComponent]

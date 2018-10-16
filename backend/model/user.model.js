@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+// Creating database user schema
 const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -15,7 +16,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: 'Password cannot be empty!',
-    minlength: [6, 'Password must be at least 6 characters long!']
+    minlength: [8, 'Password must be at least 6 characters long!']
   },
   saltSecret: String
 });
@@ -26,7 +27,7 @@ userSchema.path('email').validate((val) => {
   return emailRegex.test(val);
 }, 'Invalid e-mail.');
 
-// Events
+// Saving MongoDB user document
 userSchema.pre('save', function (next) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(this.password, salt, (err, hash) => {
@@ -37,13 +38,13 @@ userSchema.pre('save', function (next) {
   });
 });
 
-
-// Methods
+// Verifying user password
 userSchema.methods.verifyPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-userSchema.methods.generateJwt = function () {
+// Generating a JWT token
+userSchema.methods.generateJWT = function () {
   return jwt.sign({_id: this._id},
     process.env.JWT_SECRET,
     {
@@ -51,5 +52,5 @@ userSchema.methods.generateJwt = function () {
     });
 };
 
-
+// Creating the MongoDB 'User' collection
 mongoose.model('User', userSchema);

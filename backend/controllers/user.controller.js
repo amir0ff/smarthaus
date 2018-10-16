@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const passport = require('passport');
-
 const User = mongoose.model('User');
 
 module.exports.signup = (req, res, next) => {
@@ -28,12 +27,13 @@ module.exports.signin = (req, res, next) => {
     // Error from passport middleware
     if (err) return res.status(400).json(err);
     // Generate JWT for logged in user
-    else if (user) return res.status(200).json({"token": user.generateJwt()});
+    else if (user) return res.status(200).json({"token": user.generateJWT()});
     // Unknown user or wrong password response
     else return res.status(401).json(info);
   })(req, res);
 };
 
+// Get user data from MongoDB User collection
 module.exports.getUser = (req, res, next) => {
   User.findOne({_id: req._id},
     (err, user) => {
@@ -41,17 +41,17 @@ module.exports.getUser = (req, res, next) => {
       if (!user)
         return res.status(404).json({status: false, message: 'User not found!'});
       else
-      // _.pick(user, ['fullName', 'email'])
+      // Lodash version: "_.pick(user, ['fullName', 'email'])"
         return res.status(200).json({status: true, user: {fullName, email}});
     }
   );
 };
 
+// Check the integrity of the token sent by the client
 module.exports.verifyJWT = (req, res, next) => {
   let token;
   if ('authorization' in req.headers)
     token = req.headers['authorization'].split(' ')[1];
-
   if (!token)
     return res.status(403).send({auth: false, message: 'No token provided!'});
   else {

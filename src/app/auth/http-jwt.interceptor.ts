@@ -4,7 +4,7 @@ import { tap } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable()
-export class HttpErrorInterceptor implements HttpInterceptor {
+export class HttpJWTInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthenticationService) {
   }
@@ -15,7 +15,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       return next.handle(req.clone());
     } else {
       const clonedreq = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + this.authService.getToken())
+        headers: req.headers.set('Authorization', 'Bearer ' + this.authService.getJWT())
       });
       return next.handle(clonedreq).pipe(
         tap(

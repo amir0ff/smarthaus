@@ -6,7 +6,7 @@ export class SnackbarUiService {
   constructor() {
   }
 
-  showSnackbar(message, type, speed) {
+  show(message, type, speed) {
     const snackbar = document.getElementById('snackbar');
     snackbar.className = 'show alert ' + type;
     snackbar.innerText = message;

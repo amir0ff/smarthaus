@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.deleteToken();
+    this.authService.removeJWT();
     this.router.navigate(['/']);
   }
 

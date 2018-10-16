@@ -54,7 +54,7 @@ export class DevicesComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.registeredDevices.length; i++) {
       // Check for duplicates
       if (this.registeredDevices[i].address === deviceAddForm.value.address) {
-        this.snackbar.showSnackbar('The device is already added!', 'alert-danger', 3500);
+        this.snackbar.show('The device is already added!', 'alert-danger', 3500);
         this.isAdding = false;
         return;
       }
@@ -79,7 +79,7 @@ export class DevicesComponent implements OnInit, OnDestroy {
     }, error => {
       this.isAdding = false;
       console.log('Error adding a device', error);
-      this.snackbar.showSnackbar('The added device is offline!', 'alert-warning', 3500);
+      this.snackbar.show('The added device is offline!', 'alert-warning', 3500);
     });
   }
 

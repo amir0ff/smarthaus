@@ -26,22 +26,21 @@ export class AuthenticationService {
     return this.http.get(environment.apiEntryPoint + 'user');
   }
 
-
   // Helper Methods
-  setToken(token: string) {
+  setJWT(token: string) {
     localStorage.setItem('token', token);
   }
 
-  getToken() {
+  getJWT() {
     return localStorage.getItem('token');
   }
 
-  deleteToken() {
+  removeJWT() {
     localStorage.removeItem('token');
   }
 
   getUserPayload() {
-    const token = this.getToken();
+    const token = this.getJWT();
     if (token) {
       const userPayload = atob(token.split('.')[1]);
       return JSON.parse(userPayload);

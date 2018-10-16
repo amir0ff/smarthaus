@@ -38,29 +38,37 @@ body {
       img {
         width: 100px;
       }
+      span {
+        display: block;
+        font-weight: 400;
+        color: #f5f7fa;
+        font-size: 28px;
+        margin-top: 4px;
+        user-select: none;
+      }
     }
     .form-group {
       margin-bottom: 24px;
       .invalid-form {
         border-top: dotted 2px #3b4856;
         background: #dc3545;
-        padding: 4px 6px;
+        padding: 2px 6px;
         margin-top: -2px;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
         width: 100%;
         text-align: left;
-        font-size: 88%;
+        font-size: 75%;
         color: white;
       }
       &::before {
         font-family: 'Font Awesome 5 Free';
         content: '\f007';
         position: absolute;
-        font-size: 22px;
-        left: 28px;
+        font-size: 20px;
+        left: 30px;
         color: #495057;
-        padding-top: 4px;
+        padding-top: 6px;
       }
       &:nth-of-type(2) {
         &::before {
@@ -74,9 +82,9 @@ body {
       }
       input {
         height: 42px;
-        font-size: 18px;
+        font-size: 16px;
         border: 0;
-        padding-left: 54px;
+        padding-left: 48px;
       }
     }
     .alert {

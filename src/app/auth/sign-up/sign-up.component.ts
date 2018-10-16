@@ -26,9 +26,9 @@ export class SignUpComponent implements OnInit {
       err => {
         if (err.status === 422) {
           this.showLoginMessage = true;
-          this.snackbar.showSnackbar('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
+          this.snackbar.show('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
         } else {
-          this.snackbar.showSnackbar('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
+          this.snackbar.show('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
         }
       }
     );

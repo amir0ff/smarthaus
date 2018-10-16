@@ -3,6 +3,7 @@
     <div class="modal-content">
       <div class="col-12 logo">
         <img src="./assets/images/microchip.svg">
+        <span>Login Panel</span>
       </div>
       <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)" class="col-12" novalidate>
         <div class="form-group">
@@ -20,7 +21,7 @@
             <span *ngIf="password['errors']?.required">This field is required.</span>
           </div>
         </div>
-        <button type="submit" class="btn btn-info" [disabled]="signingIn">
+        <button type="submit" class="btn btn-info mt-3 mb-2" [disabled]="signingIn">
           <fa-icon *ngIf="signingIn" icon="sync-alt" [spin]="true" size="sm"></fa-icon>
           <ng-container *ngIf="!signingIn">
             <fa-icon icon="sign-in-alt" class="mr-1"></fa-icon>
@@ -33,4 +34,4 @@
     </div>
   </div>
 </div>
-
+<span class="footer">Smart Haus | Home Automation System</span>
