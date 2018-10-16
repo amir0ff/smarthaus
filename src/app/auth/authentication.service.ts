@@ -6,11 +6,6 @@ import { User } from './user.model';
 
 @Injectable()
 export class AuthenticationService {
-  selectedUser: User = {
-    fullName: '',
-    email: '',
-    password: ''
-  };
 
   // Bypassing the HTTP interceptor by sending pre-defined auth headers
   noAuthHeader = {headers: new HttpHeaders({'NoAuth': 'True'})};

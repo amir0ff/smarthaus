@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { SnackbarUiService } from '../../shared/snackbar-ui.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,10 +10,9 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  serverErrorMessages: string;
+  showLoginMessage = false;
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(private authService: AuthenticationService, private router: Router, private snackbar: SnackbarUiService) {
   }
 
   ngOnInit() {
@@ -21,27 +21,17 @@ export class SignUpComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.authService.signUp(form.value).subscribe(
       res => {
-        this.resetForm(form);
+        this.router.navigateByUrl('/signin');
       },
       err => {
         if (err.status === 422) {
-          this.serverErrorMessages = err.error.join('<br/>');
+          this.showLoginMessage = true;
+          this.snackbar.showSnackbar('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
         } else {
-          this.serverErrorMessages = 'Something went wrong. Please contact the admin!';
+          this.snackbar.showSnackbar('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
         }
       }
     );
-  }
-
-  resetForm(form: NgForm) {
-    this.authService.selectedUser = {
-      fullName: '',
-      email: '',
-      password: ''
-    };
-    form.resetForm();
-    this.serverErrorMessages = '';
-    this.router.navigateByUrl('/signin');
   }
 
 }

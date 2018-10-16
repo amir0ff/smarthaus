@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { SnackbarUiService } from '../../shared/snackbar-ui.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,16 +11,8 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(private authService: AuthenticationService, private router: Router, private snackbar: SnackbarUiService) {
   }
-
-  model = {
-    email: '',
-    password: ''
-  };
-
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  serverErrorMessages: string;
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
@@ -34,7 +27,7 @@ export class SignInComponent implements OnInit {
         this.router.navigateByUrl('/');
       },
       err => {
-        this.serverErrorMessages = err.error.message;
+        this.snackbar.showSnackbar('There was an error with the request. Status: ' + err.status, 'alert-danger', 3500);
       }
     );
   }

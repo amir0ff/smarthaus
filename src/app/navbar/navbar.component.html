@@ -17,7 +17,7 @@
            aria-haspopup="true" aria-expanded="false">
           <fa-icon icon="info-circle" size="lg"></fa-icon>
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" *ngIf="userDetails">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="" target="_blank">
             <fa-icon icon="user" class="mr-1"></fa-icon>
             {{userDetails.fullName}}
@@ -27,11 +27,6 @@
             <fa-icon icon="sign-out-alt" class="mr-1"></fa-icon>
             Log Out
           </a>
-        </div>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" *ngIf="!userDetails">
-          <a class="dropdown-item" href="https://github.com/ameer157/smarthaus" target="_blank">Source Code</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="https://www.amiroff.me/" target="_blank">Author</a>
         </div>
       </li>
     </ul>

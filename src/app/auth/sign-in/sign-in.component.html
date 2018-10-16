@@ -6,20 +6,18 @@
       </div>
       <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)" class="col-12" novalidate>
         <div class="form-group">
-          <input type="email" name="email" #email="ngModel" [(ngModel)]="model.email" class="form-control"
-                 placeholder="Enter Email" autocomplete="username"
-                 [pattern]="emailRegex"
-                 required>
-          <div *ngIf="signInForm.submitted && email['errors']?.pattern" class="invalid-form">
-            <span>Invalid email address.</span>
+          <input type="email" name="email" email #email="ngModel" ngModel class="form-control" placeholder="Enter Email"
+                 autocomplete="username" required>
+          <div *ngIf="signInForm.submitted && email.errors" class="invalid-form">
+            <span *ngIf="email['errors']?.required">This field is required.</span>
+            <span *ngIf="email['errors']?.email">Invalid email address.</span>
           </div>
         </div>
         <div class="form-group">
-          <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" class="form-control"
-                 placeholder="Enter Password" autocomplete="current-password"
-                 required minlength="4">
-          <div *ngIf="signInForm.submitted && password['errors']?.minlength" class="invalid-form">
-            <span>Password must be at least 4 characters long.</span>
+          <input type="password" name="password" #password="ngModel" ngModel class="form-control"
+                 placeholder="Enter Password" autocomplete="current-password" required>
+          <div *ngIf="signInForm.submitted && password.errors" class="invalid-form">
+            <span *ngIf="password['errors']?.required">This field is required.</span>
           </div>
         </div>
         <button type="submit" class="btn btn-info">
@@ -28,9 +26,7 @@
         </button>
       </form>
       <!-- Error message -->
-      <div class="mx-auto alert alert-danger" *ngIf="serverErrorMessages">
-        {{serverErrorMessages}}
-      </div>
+      <div id="snackbar" role="alert"></div>
     </div>
   </div>
 </div>

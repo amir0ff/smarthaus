@@ -24,18 +24,18 @@ module.exports.signup = (req, res, next) => {
 };
 
 module.exports.signin = (req, res, next) => {
-  // call for passport authentication
+  // Call for passport authentication
   passport.authenticate('local', (err, user, info) => {
-    // error from passport middleware
+    // Error from passport middleware
     if (err) return res.status(400).json(err);
-    // registered user
+    // Generate JWT for logged in user
     else if (user) return res.status(200).json({"token": user.generateJwt()});
-    // unknown user or wrong password
+    // Unknown user or wrong password response
     else return res.status(404).json(info);
   })(req, res);
 };
 
-module.exports.getProfile = (req, res, next) => {
+module.exports.getUser = (req, res, next) => {
   User.findOne({_id: req._id},
     (err, user) => {
       if (!user)

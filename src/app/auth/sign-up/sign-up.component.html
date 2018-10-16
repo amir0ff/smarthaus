@@ -6,26 +6,23 @@
       </div>
       <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" class="col-12" novalidate>
         <div class="form-group">
-          <input type="text" #fullName="ngModel" [(ngModel)]="authService.selectedUser.fullName" class="form-control"
-                 name="fullName" placeholder="Full Name" required>
+          <input type="text" #fullName="ngModel" ngModel class="form-control" name="fullName" placeholder="Full Name"
+                 required>
           <div *ngIf="signUpForm.submitted && fullName.errors" class="invalid-form">
             <span>This field is required.</span>
           </div>
         </div>
         <div class="form-group">
-          <input type="text" #email="ngModel" [(ngModel)]="authService.selectedUser.email" class="form-control"
-                 name="email" placeholder="Email" autocomplete="username"
-                 required [pattern]="emailRegex">
+          <input type="text" #email="ngModel" ngModel class="form-control"
+                 name="email" placeholder="Email" email autocomplete="username" required>
           <div *ngIf="signUpForm.submitted && email.errors" class="invalid-form">
             <span *ngIf="email['errors']?.required">This field is required.</span>
-            <span *ngIf="email['errors']?.pattern">Invalid email address.</span>
+            <span *ngIf="email['errors']?.email">Invalid email address.</span>
           </div>
         </div>
         <div class="form-group">
-          <input type="password" #password="ngModel" [(ngModel)]="authService.selectedUser.password"
-                 class="form-control" autocomplete="current-password"
-                 name="password" placeholder="Password"
-                 minlength="8" required>
+          <input type="password" #password="ngModel" ngModel class="form-control" autocomplete="current-password"
+                 name="password" placeholder="Password" minlength="8" required>
           <div *ngIf="signUpForm.submitted && password.errors" class="invalid-form">
             <span *ngIf="password['errors']?.required">This field is required.</span>
             <span *ngIf="password['errors']?.minlength">Enter at least 8 characters.</span>
@@ -36,11 +33,9 @@
         </button>
       </form>
       <!-- Error message -->
-      <div class="mx-auto alert alert-danger" *ngIf="serverErrorMessages">
-        <span>{{serverErrorMessages}}</span>
-      </div>
-      <div class="text-center login-page" *ngIf="serverErrorMessages">
-        <span>Go to <a routerLink="/devices">Login</a> page!</span>
+      <div id="snackbar" role="alert"></div>
+      <div class="text-center login-page" *ngIf="showLoginMessage">
+        <span>Go to <a routerLink="/signin">Login</a> page!</span>
       </div>
     </div>
   </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../auth/authentication.service';
-import { SnackbarUiService } from '../shared/snackbar-ui.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +20,7 @@ export class NavbarComponent implements OnInit {
         // console.log(this.userDetails);
       },
       err => {
-        this.userDetails = false;
+        this.userDetails = null;
         // console.log('Error:', err);
       }
     );

@@ -129,7 +129,7 @@ class Device {
 
 router.post('/signin', userCtrl.signin);
 router.post('/signup', userCtrl.verifyJWT, userCtrl.signup);
-router.get('/user', userCtrl.verifyJWT, userCtrl.getProfile);
+router.get('/user', userCtrl.verifyJWT, userCtrl.getUser);
 
 router.post('/add', userCtrl.verifyJWT, function (req, res) {
   let new_device = new Device();
