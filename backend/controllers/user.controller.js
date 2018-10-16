@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const _ = require('lodash');
 
 const User = mongoose.model('User');
 
@@ -38,10 +37,12 @@ module.exports.signin = (req, res, next) => {
 module.exports.getUser = (req, res, next) => {
   User.findOne({_id: req._id},
     (err, user) => {
+      const {fullName, email} = {fullName: user.fullName, email: user.email};
       if (!user)
         return res.status(404).json({status: false, message: 'User not found!'});
       else
-        return res.status(200).json({status: true, user: _.pick(user, ['fullName', 'email'])});
+      // _.pick(user, ['fullName', 'email'])
+        return res.status(200).json({status: true, user: {fullName, email}});
     }
   );
 };
