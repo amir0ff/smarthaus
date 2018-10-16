@@ -26,18 +26,15 @@ app.use(passport.initialize());
 // Import API routes
 app.use('/api', routes);
 
-// Catch unauthorised errors
-app.use((err, req, res, next) => {
-  if (err.name === 'ValidationError') {
-    let valErrors = [];
-    Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
-    res.status(401).send(valErrors)
-  }
-});
-
 // Serve static files form the dist directory
 app.use(express.static(path.join(__dirname, '../dist/smarthaus')));
 app.use('/*', express.static(path.join(__dirname, '../dist/smarthaus')));
+
+// Handle errors
+app.use((err, req, res, next) => {
+  res.json({message: err.message});
+  console.log(err);
+});
 
 // Fire up the Node.js server
 app.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
