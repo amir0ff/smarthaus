@@ -1,11 +1,22 @@
-.btn-info {
-  min-width: 96px;
+.form-section {
+  .modal-content {
+    .form-group {
+      &:nth-of-type(1) {
+        &::before {
+          content: '\f0e0';
+        }
+      }
+    }
+    .btn-info {
+      min-width: 96px;
+    }
+  }
 }
 
 .footer {
   display: block;
   position: absolute;
-  bottom: 8px;
+  bottom: 1.5rem;
   left: calc(50% - 136.78px);
   color: #f5f7fa;
   font-size: 12px;
