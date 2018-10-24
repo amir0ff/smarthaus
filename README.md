@@ -177,6 +177,7 @@ ___
 - [ ] Add Raspberry Pi control support  
 - [ ] Add SSL Certificate on Node.js server
 - [ ] Enable HTTPS on MongoDB server
+- [x] Add MongoDB database
 - [x] Add JWT authentication for client and server HTTP requests
 - [ ] Add webhook deployment to the Raspberry Pi from a remote repository  
 - [ ] Add dynamic dashboard
