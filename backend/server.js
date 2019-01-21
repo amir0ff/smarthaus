@@ -17,7 +17,7 @@ const routes = require('./api');
 // Using body parser for requests
 app.use(bodyParser.json());
 
-// Apply CORS config
+// Apply CORS config (Enable All CORS Requests)
 app.use(cors());
 
 // Initialize passport middleware
