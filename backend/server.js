@@ -10,6 +10,9 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
 const app = express();
+const consoleConfig = require('./config/console-stamp.config');
+require('console-stamp')(console, consoleConfig);
+
 
 // Importing API routes
 const routes = require('./api');
@@ -33,7 +36,7 @@ app.use('/*', express.static(path.join(__dirname, '../dist/smarthaus')));
 // Handle errors
 app.use((err, req, res, next) => {
   res.json({message: err.message});
-  console.log(err);
+  console.error(err);
 });
 
 // Fire up the Node.js server
