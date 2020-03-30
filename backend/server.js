@@ -46,6 +46,6 @@ app.use((err, req, res, next) => {
 https.createServer({
     key: fs.readFileSync('keys/key.pem'),
     cert: fs.readFileSync('keys/cert.pem'),
-    passphrase: 'beguiles67amoebas49Glimmers'
+    passphrase: 'YOUR_PEM_PASSPHRASE'
 }, app)
 .listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
