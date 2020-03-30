@@ -179,7 +179,7 @@ It should return a JSON body with all the device data.
 ___
 ## 📑To-Do List  
 - [ ] Add Raspberry Pi control support  
-- [ ] Add SSL Certificate on Node.js server
+- [x] Add SSL Certificate on Node.js server
 - [ ] Enable HTTPS on MongoDB server
 - [x] Add MongoDB database
 - [x] Add JWT authentication for client and server HTTP requests
