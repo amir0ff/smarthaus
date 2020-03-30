@@ -2,7 +2,7 @@
 // Remember to keep your own JWT_SECRET keys private
 const config = {
   "development": {
-    "PORT": 80,
+    "PORT": 443,
     "MONGODB_URI": "mongodb://127.0.0.1:27017/smarthaus",
     "JWT_SECRET": "SECRET#123",
     "JWT_EXP": "24h"

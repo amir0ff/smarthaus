@@ -10,6 +10,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
 const app = express();
+const https = require('https');
+const fs = require('fs');
 const consoleConfig = require('./config/console-stamp.config');
 require('console-stamp')(console, consoleConfig);
 
@@ -40,4 +42,10 @@ app.use((err, req, res, next) => {
 });
 
 // Fire up the Node.js server
-app.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
+// app.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
+https.createServer({
+    key: fs.readFileSync('keys/key.pem'),
+    cert: fs.readFileSync('keys/cert.pem'),
+    passphrase: 'beguiles67amoebas49Glimmers'
+}, app)
+.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
