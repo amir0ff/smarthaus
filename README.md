@@ -161,7 +161,7 @@ rest.set_name("Weather Station");
   
 ##### Sets an ID for the device  
 ```  
-rest.set_name("Weather Station");  
+rest.set_id("841239"); 
 ```  
 The ID should be 6 characters long (will be automatically generated if not set)  
   
