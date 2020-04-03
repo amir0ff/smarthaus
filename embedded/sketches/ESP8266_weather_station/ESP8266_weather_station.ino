@@ -4,7 +4,7 @@
    on pin D3 and sends the data back to the RESTful API.
 
    Forked from Marco Schwartz [https://github.com/marcoschwartz]
-   Modified and remixed by Amir Off [https://github.com/ameer157] on Sep, 2018
+   Modified and remixed by Amir Off [https://github.com/amiroffme] on Sep, 2018
 */
 
 // Import required libraries
