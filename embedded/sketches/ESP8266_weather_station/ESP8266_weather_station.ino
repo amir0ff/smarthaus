@@ -1,9 +1,9 @@
 /*
    This a working example sketch for the ESP8266 microcontroller.
    It reads data from a DHT11 temperature and humidity sensor connected-
-   on pin D3 and makes it available to the API.
+   on pin D3 and sends the data back to the RESTful API.
 
-   Forked from Marco Schwartz [https://github.com/marcoschwartz/aREST]
+   Forked from Marco Schwartz [https://github.com/marcoschwartz]
    Modified and remixed by Amir Off [https://github.com/ameer157] on Sep, 2018
 */
 
@@ -36,6 +36,7 @@ void setup(void)
 {
   // Start Serial
   Serial.begin(115200);
+  dht.begin();
 
   // Initialize variables and expose them to RESTful API
   rest.variable("temperature", &temperature);
@@ -79,4 +80,3 @@ void loop() {
   rest.handle(client);
 
 }
-
