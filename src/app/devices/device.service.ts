@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class DeviceService {
@@ -43,7 +43,7 @@ export class DeviceService {
   }
 
   getVariable(id, variable) {
-    return this.http.get(environment.apiEntryPoint + id + '/' + variable);
+    return this.http.get(environment.apiEntryPoint + 'device/' + id + '/' + variable);
   }
 
   callFunction(id, called_function, parameters) {
@@ -52,4 +52,12 @@ export class DeviceService {
         console.log(data);
       });
   }
+
+  gpioDigitalWrite(pin, value) {
+    this.http.get(environment.apiEntryPoint + 'pi' + '/' + pin + '/' + value)
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
+
 }

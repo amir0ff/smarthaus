@@ -14,6 +14,9 @@
 const router = require('express').Router();
 const request = require('request');
 const userCtrl = require('../controllers/user.controller');
+const consoleConfig = require('../config/console-stamp.config');
+require('console-stamp')(console, consoleConfig);
+const rpio = require('rpio');
 
 /* Registered devices are non-persistent and
    live as long as the Node.js process is running */
@@ -30,7 +33,7 @@ const database = {
 
 class Device {
   constructor() {
-    this.type = "";
+    this.hardware = "";
     this.address = "";
     this.name = "";
     this.id = "";
@@ -116,6 +119,12 @@ class Device {
 
   };
 
+  gpioDigitalWrite(pin, value) {
+    const val = parseInt(value) === 0 ? rpio.LOW : rpio.HIGH;
+    rpio.open(pin, rpio.OUTPUT, rpio.LOW);
+    rpio.write(pin, val);
+  }
+
   pinMode(pin, value, callback) {
 
     request({
@@ -130,19 +139,17 @@ class Device {
 router.post('/signin', userCtrl.signin);
 router.post('/signup', userCtrl.verifyJWT, userCtrl.signup);
 router.get('/user', userCtrl.verifyJWT, userCtrl.getUser);
-
-router.post('/add', userCtrl.verifyJWT, function (req, res) {
+router.post('/add', userCtrl.verifyJWT, (req, res) => {
   let new_device = new Device();
-  new_device.type = req.body.type;
+  new_device.hardware = req.body.hardware;
   new_device.address = req.body.address;
 
-  setTimeout(function () {
-    new_device.getVariable('id', function (error, response, body) {
-      if (error || typeof(body) === 'undefined') {
-        console.log('The device is offline and cannot be added!');
+  setTimeout(() => {
+    new_device.getDevice((error, response, body) => {
+      if (error || typeof (body) === 'undefined') {
+        console.warn('The device is offline and cannot be added!');
         res.status(404).json({'error': 'The device is offline and cannot be added!'});
-      }
-      else {
+      } else {
         new_device.id = body.id;
         new_device.name = body.name;
         new_device.hardware = body.hardware;
@@ -151,7 +158,7 @@ router.post('/add', userCtrl.verifyJWT, function (req, res) {
         res.status(200).json({
           'id': body.id
         });
-        console.log("Device added with ID: " + body.id);
+        console.info("Device added with ID: " + body.id);
       }
     });
   }, 2000);
@@ -160,24 +167,14 @@ router.post('/add', userCtrl.verifyJWT, function (req, res) {
 
 // Return all devices
 router.get('/devices', userCtrl.verifyJWT, function (req, res) {
-  let simple_devices = [];
-  for (let i = 0; i < database.devices.length; i++) {
-    let simple_device = {};
-    simple_device.id = database.devices[i].id;
-    simple_device.name = database.devices[i].name;
-    simple_device.hardware = database.devices[i].hardware;
-    simple_device.type = database.devices[i].type;
-    simple_device.address = database.devices[i].address;
-    simple_devices.push(simple_device);
-  }
-  res.json(simple_devices);
+  res.json(database.devices);
 });
 
 // Return a specific device
 router.get('/:device', userCtrl.verifyJWT, function (req, res) {
   console.log('Sync request sent to device: ' + req.params.device);
   let device = database.getDevice(req.params.device);
-  if (typeof(device) !== 'undefined') {
+  if (typeof (device) !== 'undefined') {
     // Get status
     device.getDevice(function (error, response, body) {
       res.json(body);
@@ -188,23 +185,30 @@ router.get('/:device', userCtrl.verifyJWT, function (req, res) {
 });
 
 // Execute a function
-router.get('/:device/:command', userCtrl.verifyJWT, function (req, res) {
+router.get('/:device/execute/:command', userCtrl.verifyJWT, function (req, res) {
   // Get device
   let device = database.getDevice(req.params.device);
-  if (typeof(device) !== 'undefined') {
-    if (req.query.params) {
-      console.log('Function execution request sent to device: ' + req.params.device);
-      // Execute function
-      device.callFunction(req.params.command, req.query.params, function (error, response, body) {
-        res.json(body);
-      });
-    } else {
-      console.log('Variable read request sent to device: ' + req.params.device);
-      // Get variable
-      device.getVariable(req.params.command, function (error, response, body) {
-        res.json(body);
-      });
-    }
+  if (typeof (device) !== 'undefined') {
+    console.log('Function execution request sent to device: ' + req.params.device);
+    // Execute function
+    device.callFunction(req.params.command, req.query.params, (error, response, body) => {
+      res.json(body);
+    });
+  } else {
+    res.json({message: 'Device not found'});
+  }
+});
+
+// Get variable
+router.get('/device/:device/:variable', userCtrl.verifyJWT, (req, res) => {
+  // Get device
+  let device = database.getDevice(req.params.device);
+  if (typeof (device) !== 'undefined') {
+    console.log('Variable read request sent to device: ' + req.params.device);
+    // Get variable
+    device.getVariable(req.params.variable, (error, response, body) => {
+      res.json(body);
+    });
   } else {
     res.json({message: 'Device not found'});
   }
@@ -215,13 +219,12 @@ router.get('/:device/digital/:pin/:value', userCtrl.verifyJWT, function (req, re
   console.log('Digital write request sent to device: ' + req.params.device);
   // Get device
   let device = database.getDevice(req.params.device);
-  if (typeof(device) !== 'undefined') {
+  if (typeof (device) !== 'undefined') {
     // Send command
     device.digitalWrite(req.params.pin, req.params.value, function (error, response, body) {
       res.json(body);
     });
-  }
-  else {
+  } else {
     res.json({message: 'Device not found'});
   }
 });
@@ -257,6 +260,14 @@ router.get('/:device/digital/:pin/', userCtrl.verifyJWT, function (req, res) {
   device.digitalRead(req.params.pin, function (error, response, body) {
     res.json(body);
   });
+});
+
+// GPIO Digital Write
+router.get('/pi/:pin/:value', userCtrl.verifyJWT, (req, res) => {
+  console.info('Digital write request sent to GPIO: ' + req.params.pin);
+  let device = new Device();
+  device.gpioDigitalWrite(req.params.pin, req.params.value);
+  return res.json({'message': 'Digital write request sent to GPIO: ' + req.params.pin})
 });
 
 // Pin mode
