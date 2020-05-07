@@ -22,8 +22,12 @@
             <fa-icon icon="user" class="mr-1"></fa-icon>
             {{userDetails.fullName}}
           </a>
+          <a class="dropdown-item" routerLink="/signup">
+            <fa-icon class="mr-1" icon="plus"></fa-icon>
+            Add User
+          </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item"  href="" (click)="logOut()">
+          <a (click)="logOut()" class="dropdown-item" href="">
             <fa-icon icon="sign-out-alt" class="mr-1"></fa-icon>
             Log Out
           </a>
