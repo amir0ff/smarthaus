@@ -1,21 +1,23 @@
-import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import {NgModule} from '@angular/core';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
 import {
-  faSignal,
-  faPlus,
-  faSpinner,
-  faMicrochip,
-  faUser,
-  faLightbulb,
-  faThermometerHalf,
-  faSyncAlt,
   faAddressCard,
+  faBell,
+  faEnvelope,
   faInfoCircle,
-  faSignOutAlt,
+  faLightbulb,
+  faMicrochip,
+  faPlus,
+  faSignal,
   faSignInAlt,
-  faEnvelope
+  faSignOutAlt,
+  faSpinner,
+  faSyncAlt,
+  faThermometerHalf,
+  faUser
 } from '@fortawesome/free-solid-svg-icons';
+import {faRaspberryPi} from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   faSignal,
@@ -30,7 +32,10 @@ library.add(
   faInfoCircle,
   faSignOutAlt,
   faSignInAlt,
-  faEnvelope
+  faEnvelope,
+  faRaspberryPi,
+  faBell,
+  faPlus
 );
 
 @NgModule({
