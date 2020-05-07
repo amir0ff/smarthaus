@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const User = mongoose.model('User');
+const consoleConfig = require('../config/console-stamp.config');
+require('console-stamp')(console, consoleConfig);
 
 module.exports.signup = (req, res, next) => {
   let user = new User();
@@ -27,7 +29,10 @@ module.exports.signin = (req, res, next) => {
     // Error from passport middleware
     if (err) return res.status(400).json(err);
     // Generate JWT for logged in user
-    else if (user) return res.status(200).json({"token": user.generateJWT()});
+    else if (user) {
+      res.status(200).json({"token": user.generateJWT()});
+      console.info("User logged in: " + req.body.email);
+    }
     // Unknown user or wrong password response
     else return res.status(401).json(info);
   })(req, res);
@@ -37,12 +42,13 @@ module.exports.signin = (req, res, next) => {
 module.exports.getUser = (req, res, next) => {
   User.findOne({_id: req._id},
     (err, user) => {
-      const {fullName, email} = {fullName: user.fullName, email: user.email};
       if (!user)
         return res.status(404).json({status: false, message: 'User not found!'});
-      else
-      // Lodash version: "_.pick(user, ['fullName', 'email'])"
+      else {
+        const {fullName, email} = {fullName: user.fullName, email: user.email};
+        // Lodash version: "_.pick(user, ['fullName', 'email'])"
         return res.status(200).json({status: true, user: {fullName, email}});
+      }
     }
   );
 };
