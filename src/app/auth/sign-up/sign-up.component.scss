@@ -1,6 +1,9 @@
+.back-btn, .signup-btn {
+  min-width: 90px;
+}
+
 .footer {
   position: relative;
-  bottom: 1.5rem;
   left: calc(50% - 136.78px);
   color: #f5f7fa;
   font-size: 12px;

@@ -7,7 +7,7 @@
       </div>
       <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" class="col-12" novalidate>
         <div class="form-group">
-          <input type="text" #fullName="ngModel" ngModel class="form-control" name="fullName" placeholder="Full Name"
+          <input #fullName="ngModel" class="form-control" name="fullName" ngModel placeholder="Name" type="text"
                  required>
           <div *ngIf="signUpForm.submitted && fullName.errors" class="invalid-form">
             <span>This field is required.</span>
@@ -35,8 +35,10 @@
       </form>
       <!-- Error message -->
       <div id="snackbar" role="alert"></div>
-      <div class="text-center login-page mt-2" *ngIf="showLoginMessage">
-        <span>Go to <a routerLink="/signin">Login</a> page!</span>
+      <div class="text-center login-page mt-3">
+        <button class="btn btn-secondary back-btn" routerLink="/">
+          Cancel
+        </button>
       </div>
     </div>
   </div>

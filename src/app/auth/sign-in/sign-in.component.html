@@ -7,7 +7,7 @@
       </div>
       <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)" class="col-12" novalidate>
         <div class="form-group">
-          <input type="email" name="email" email #email="ngModel" ngModel class="form-control" placeholder="Enter Email"
+          <input #email="ngModel" class="form-control" email name="email" ngModel placeholder="Email" type="email"
                  autocomplete="username" required>
           <div *ngIf="signInForm.submitted && email.errors" class="invalid-form">
             <span *ngIf="email['errors']?.required">This field is required.</span>
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <input type="password" name="password" #password="ngModel" ngModel class="form-control"
-                 placeholder="Enter Password" autocomplete="current-password" required>
+                 autocomplete="current-password" placeholder="Password" required>
           <div *ngIf="signInForm.submitted && password.errors" class="invalid-form">
             <span *ngIf="password['errors']?.required">This field is required.</span>
           </div>

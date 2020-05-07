@@ -17,7 +17,9 @@ body {
   font-size: $font-size;
   -webkit-font-smoothing: antialiased;
   background: #306bbb; // Fallback for old browsers
-  background: linear-gradient(to top, #3a6073, #306bbb);
+  @media (min-width: 992px) {
+    background: linear-gradient(to top, #3a6073, #306bbb);
+  }
 }
 
 ::selection {
@@ -28,16 +30,20 @@ body {
 .form-section {
   margin: 5.5rem auto 0;
   padding: 0;
+
   .modal-content {
     background-color: #3b4652;
     opacity: 0.95;
     padding: 18px;
+
     .logo {
       margin-top: -66px;
       margin-bottom: 35px;
+
       img {
         width: 100px;
       }
+
       span {
         display: block;
         font-weight: 400;
@@ -47,8 +53,10 @@ body {
         user-select: none;
       }
     }
+
     .form-group {
       margin-bottom: 24px;
+
       .invalid-form {
         border-top: dotted 2px #3b4856;
         background: #dc3545;
@@ -61,6 +69,7 @@ body {
         font-size: 75%;
         color: white;
       }
+
       &::before {
         font-family: 'Font Awesome 5 Free';
         content: '\f007';
@@ -70,16 +79,19 @@ body {
         color: #495057;
         padding-top: 6px;
       }
+
       &:nth-of-type(2) {
         &::before {
           content: '\f0e0';
         }
       }
+
       &:last-of-type {
         &::before {
           content: '\f023';
         }
       }
+
       input {
         height: 42px;
         font-size: 16px;
@@ -87,11 +99,14 @@ body {
         padding-left: 48px;
       }
     }
+
     .alert {
       margin-top: 24px;
     }
+
     .login-page {
       color: white;
+
       a {
         color: white;
         text-decoration: underline;
@@ -116,10 +131,12 @@ body {
   .dropdown-item {
     font-size: $font-size;
     color: #495057;
+
     &:active, &:focus {
       color: white;
       background-color: darken($info, 10%);
     }
+
     &:hover {
       color: white;
       background-color: $info;
@@ -155,15 +172,19 @@ body {
   box-shadow: 0 2px 0 0 $btn-primary-color;
   transition: 0.30s ease-in-out;
   will-change: transform;
+
   &:active {
     box-shadow: 0 1px 0 0 darken($btn-primary-color, 8%);
   }
+
   &:focus, &.disabled, &:disabled {
     box-shadow: none;
     transform: translate(0px, 2px);
   }
+
   &.disabled, &:disabled {
     opacity: 0.55;
+    cursor: default;
   }
 }
 
@@ -173,9 +194,11 @@ body {
     box-shadow: 0 2px 0 0 $btn-secondary-color;
     transition: 0.30s ease-in-out;
     will-change: transform;
+
     &:active {
       box-shadow: 0 1px 0 0 darken($btn-secondary-color, 8%);
     }
+
     &:focus, &.disabled, &:disabled {
       box-shadow: none;
       transform: translate(0px, 2px);
@@ -188,9 +211,11 @@ body {
   box-shadow: 0 2px 0 0 $btn-info-color;
   transition: 0.30s ease-in-out;
   will-change: transform;
+
   &:active {
     box-shadow: 0 1px 0 0 darken($btn-info-color, 8%);
   }
+
   &:focus, &.disabled, &:disabled {
     box-shadow: none;
     transform: translate(0px, 2px);
@@ -202,9 +227,11 @@ body {
   box-shadow: 0 2px 0 0 $btn-success-color;
   transition: 0.30s ease-in-out;
   will-change: transform;
+
   &:active {
     box-shadow: 0 1px 0 0 darken($btn-success-color, 8%);
   }
+
   &:focus, &.disabled, &:disabled {
     box-shadow: none;
     transform: translate(0px, 2px);
@@ -216,9 +243,11 @@ body {
   box-shadow: 0 2px 0 0 $btn-danger-color;
   transition: 0.30s ease-in-out;
   will-change: transform;
+
   &:active {
     box-shadow: 0 1px 0 0 darken($btn-danger-color, 8%);
   }
+
   &:focus, &.disabled, &:disabled {
     box-shadow: none;
     transform: translate(0px, 2px);
