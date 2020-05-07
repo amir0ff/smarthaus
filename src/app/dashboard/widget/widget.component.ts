@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { DeviceService } from '../../devices/device.service';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {DeviceService} from '../../devices/device.service';
 
 @Component({
   selector: 'app-widget',
@@ -33,6 +33,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
 
   getTemperature(id, variable) {
     this.deviceService.getVariable(id, variable).subscribe((data) => {
+      console.log(data);
       if (data) {
         this.isConnected = true;
         this.temperature = data['temperature'];
@@ -52,6 +53,7 @@ export class WidgetComponent implements OnInit, OnDestroy {
 
   getHumidity(id, variable) {
     this.deviceService.getVariable(id, variable).subscribe((data) => {
+      console.log(data);
       if (data) {
         this.isConnected = true;
         this.humidity = data['humidity'];
@@ -78,6 +80,10 @@ export class WidgetComponent implements OnInit, OnDestroy {
 
   onOff(id, pin, value) {
     this.deviceService.digitalWrite(id, pin, value);
+  }
+
+  gpioDigitalWrite(pin, value) {
+    this.deviceService.gpioDigitalWrite(pin, value);
   }
 
   mode(id, pin, mode) {

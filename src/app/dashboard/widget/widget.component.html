@@ -1,34 +1,13 @@
 <div class="row no-gutters">
-  <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12 widget mr-3">
-    <div class="card text-white bg-dark mb-3">
-      <span class="badge badge-success" data-toggle="tooltip" data-placement="top"
-            title="Device is connected">
-          <fa-icon icon="signal" size="m"></fa-icon>
-      </span>
-      <h5 class="card-header">
-        <fa-icon icon="lightbulb" size="m" class="mr-1"></fa-icon>
-        Bedroom LEDs
-      </h5>
-      <div class="card-body">
-        <p class="card-text">Relay switch on pin D5</p>
-        <button class='btn btn-primary btn-sm btn-success mr-2' type="button" (click)="onOff('759410', 5, 1)">
-          ON
-        </button>
-        <button class='btn btn-primary btn-sm btn-danger mr-2' type="button" (click)="onOff('759410', 5, 0)">
-          OFF
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12 widget mr-3">
+  <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12 widget mr-sm-3">
     <div class="card text-white bg-dark mb-3">
       <div *ngIf="!isLoading || isSyncing">
         <span *ngIf="isConnected" class="badge badge-success" data-toggle="tooltip" data-placement="top"
               title="Device is connected">
             <fa-icon icon="signal" size="m"></fa-icon>
         </span>
-      <span *ngIf="!isConnected" class="badge badge-danger" data-toggle="tooltip" data-placement="top"
-            title="Device is not connected!">
+        <span *ngIf="!isConnected" class="badge badge-danger" data-placement="top" data-toggle="tooltip"
+              title="Device is not connected!">
             <fa-icon icon="signal" size="m"></fa-icon>
         </span>
       </div>
@@ -50,6 +29,48 @@
                 (click)="sync()">
           <fa-icon *ngIf="isSyncing && isLoading" icon="sync-alt" [spin]="true" size="sm"></fa-icon>
           <span *ngIf="!isSyncing || !isLoading">Sync</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12 widget mr-sm-3">
+    <div class="card text-white bg-dark mb-3">
+      <span class="badge badge-success" data-placement="top" data-toggle="tooltip"
+            title="Device is connected">
+          <fa-icon icon="signal" size="m"></fa-icon>
+      </span>
+      <h5 class="card-header">
+        <fa-icon class="mr-1" icon="lightbulb" size="m"></fa-icon>
+        Bedroom LEDs
+      </h5>
+      <div class="card-body">
+        <p class="card-text">Relay switch on pin D5</p>
+        <button (click)="onOff('759410', 5, 1)" class='btn btn-primary btn-sm btn-success mr-2' type="button">
+          ON
+        </button>
+        <button (click)="onOff('759410', 5, 0)" class='btn btn-primary btn-sm btn-danger mr-2' type="button">
+          OFF
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-xl-3 col-md-6 col-sm-12 widget mr-sm-3">
+    <div class="card text-white bg-dark mb-3">
+      <span class="badge badge-success" data-placement="top" data-toggle="tooltip"
+            title="This device">
+           <fa-icon [icon]="['fab', 'raspberry-pi']" size="2x"></fa-icon>
+      </span>
+      <h5 class="card-header">
+        <fa-icon [icon]="['fas', 'bell']" class="mr-1" size="m"></fa-icon>
+        Alarm
+      </h5>
+      <div class="card-body">
+        <p class="card-text">Activate alarm on GPIO 11</p>
+        <button (click)="gpioDigitalWrite(11, 1)" class='btn btn-primary btn-sm btn-success mr-2' type="button">
+          ON
+        </button>
+        <button (click)="gpioDigitalWrite(11, 0)" class='btn btn-primary btn-sm btn-danger mr-2' type="button">
+          OFF
         </button>
       </div>
     </div>
