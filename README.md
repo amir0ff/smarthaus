@@ -1,9 +1,9 @@
 
-# 🏠 Smart Haus
+# 🏠 SmartHaus
 [![Build Status](https://travis-ci.org/amiroffme/smarthaus.svg?branch=master)](https://travis-ci.org/amiroffme/smarthaus)
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
-Smart Haus is a home automation system for building real-time dashboards for monitoring and controlling IoT devices. It works with microcontrollers like the Arduino Uno/Mega/Duo and the ESP8266 or ESP32.
+SmartHaus is a home automation system for building real-time dashboards for monitoring and controlling IoT devices. It works with microcontrollers like the Arduino Uno/Mega/Duo and the ESP8266 or ESP32.
 Built with Angular on the client-side and Node.js on the server-side and communicates via a RESTful API.
 
 ![](https://miro.medium.com/fit/c/1400/420/1*ekrneFlaBAAqotbwcJ0pDA.png)
@@ -188,4 +188,4 @@ ___
 
 
 ## License
-Smart Haus is licensesd under the [GPL-3.0](https://github.com/amiroffme/smarthaus/blob/master/LICENSE) license.
+SmartHaus is licensesd under the [GPL-3.0](https://github.com/amiroffme/smarthaus/blob/master/LICENSE) license.
