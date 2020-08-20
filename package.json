@@ -49,7 +49,7 @@
     "@types/jasmine": "^2.8.16",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^10.17.17",
-    "bcrypt": "^3.0.8",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "codelyzer": "~4.2.1",
     "cors": "^2.8.5",
