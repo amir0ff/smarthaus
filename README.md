@@ -188,4 +188,4 @@ ___
 
 
 ## License
-SmartHaus is licensesd under the [GPL-3.0](https://github.com/amiroffme/smarthaus/blob/master/LICENSE) license.
+SmartHaus is licensesd under the [GPL-3.0](https://github.com/amiroff157/smarthaus/blob/master/LICENSE) license.
