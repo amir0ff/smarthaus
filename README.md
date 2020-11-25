@@ -1,6 +1,6 @@
 
 # 🏠 SmartHaus
-[![Build Status](https://travis-ci.org/amiroffme/smarthaus.svg?branch=master)](https://travis-ci.org/amiroffme/smarthaus)
+[![Build Status](https://travis-ci.org/amiroff157/smarthaus.svg?branch=master)](https://travis-ci.org/amiroff157/smarthaus)
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
 SmartHaus is a home automation system for building real-time dashboards for monitoring and controlling IoT devices. It works with microcontrollers like the Arduino Uno/Mega/Duo and the ESP8266 or ESP32.
@@ -14,8 +14,8 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 5. 👍 ****Simple****: No need for external MQTT broker configurations. It's fully RESTful!
 
 ## Installation
-* On your device, upload one of the required Arduino example sketches that are available in the [sketches](https://github.com/amiroffme/smarthaus/tree/master/embedded/sketches) directory of this project. Please refer to the [Embeded API](https://github.com/amiroffme/smarthaus#embedded-api) in the docs section.
-* Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@amiroffme/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
+* On your device, upload one of the required Arduino example sketches that are available in the [sketches](https://github.com/amiroff157/smarthaus/tree/master/embedded/sketches) directory of this project. Please refer to the [Embeded API](https://github.com/amiroff157/smarthaus#embedded-api) in the docs section.
+* Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@amiroff157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
 
 ⚠️ User signup is initially protected both on the client and backend. Edit the following files to allow access:
 1. [backend/api/index.js](backend/api/index.js#L131) - remove `userCtrl.verifyJWT`
