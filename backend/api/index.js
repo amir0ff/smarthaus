@@ -3,7 +3,7 @@
    The Node.js API module that communicates with the devices
 
    * Forked from Marco Schwartz [https://github.com/marcoschwartz]
-   * Modified and remixed by Amir Off [https://github.com/amiroffme] on Sep, 2018
+   * Modified and remixed by Amir Off [https://github.com/amiroff157] on Sep, 2018
    *
    * This library is licensed under the GNU General Public License v3.0
 
