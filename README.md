@@ -18,7 +18,7 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 * Set up the system on a Raspberry Pi. Please refer to [this](https://medium.com/@amiroff157/the-most-robust-and-secure-home-automation-system-6d0ddbb39f29) tutorial.
 
 ⚠️ User signup is initially protected both on the client and backend. Edit the following files to allow access:
-1. [backend/api/index.js](backend/api/index.js#L131) - remove `userCtrl.verifyJWT`
+1. [backend/api/index.js](backend/api/index.js#L140) - remove `userCtrl.verifyJWT`
 2. [src/app/app-routing.module.ts](src/app/app-routing.module.ts#L12)  - remove `canActivate: [AuthGuard]`
 
 
