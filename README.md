@@ -23,11 +23,11 @@ Built with Angular on the client-side and Node.js on the server-side and communi
 
 
 ## Client API
-The API is similar to the official [Arduino](https://www.arduino.cc/reference/en/#functions) with Analog & Digital I/O functions except for the ```callFunction()``` and the ```getVariable()``` functions.
+The API is similar to the official [Arduino](https://www.arduino.cc/reference/en/#functions) with Analog & Digital I/O functions except for the ```js callFunction()``` and the ```getVariable()``` functions.
 
 
 ### pinMode()
-```
+```js
 pinMode(id, pin, mode)
 ```
 Configures the specified pin to behave either as an input or an output
@@ -36,14 +36,14 @@ Configures the specified pin to behave either as an input or an output
 **pin:** the pin number.
 **mode:** 'i' for INPUT, 'o' for OUTPUT and 'I' for INPUT_PULLUP.
 #### Example:
-```
+```js
 // Sets pin 6 mode to OUTPUT.
 pinMode('468792', 6, 'o')
 ```
 ⚠️ https://www.baldengineer.com/when-to-use-arduinos-pinmode-and-why.html
 ___
 ### digitalWrite()
-```
+```js
 digitalWrite(id, pin, value)
 ```
 Writes a HIGH or a LOW value to a digital pin
@@ -52,14 +52,14 @@ Writes a HIGH or a LOW value to a digital pin
 **pin:** the pin number to write to.
 **value:** 1 for 'HIGH' and 0 for 'LOW'.
 #### Example:
-```
+```js
 // Sets pin 5 state to HIGH.
 digitalWrite('468792', 5, 1)
 ```
 
 ___
 ### digitalRead()
-```
+```js
 digitalRead(id, pin)
 ```
 Reads the state value from a specified digital pin
@@ -67,7 +67,7 @@ Reads the state value from a specified digital pin
 **id:** device ID.
 **pin:** the pin number to read from.
 #### Example:
-```
+```js
 // Reads pin 4 state value and prints it to the console
 digitalRead('468792', 4)
     .subscribe((data) => {
@@ -77,7 +77,7 @@ digitalRead('468792', 4)
 
 ___
 ### analogWrite()
-```
+```js
 analogWrite(id, pin, value)
 ```
 Writes an analog value (PWM wave) to a pin
@@ -86,14 +86,14 @@ Writes an analog value (PWM wave) to a pin
 **pin:** the pin to write to.
 **value:** the duty cycle: between 0 (always off) and 255 (always on).
 #### Example:
-```
+```js
 // Writes an analog value to pin 3
 analogWrite('468792', 3)
 ```
 
 ___
 ### analogRead()
-```
+```js
 analogRead(id, pin)
 ```
 Reads the value from the specified analog pin
@@ -101,7 +101,7 @@ Reads the value from the specified analog pin
 **id:** device ID.
 **pin:** the pin to read from.
 #### Example:
-```
+```js
 // Reads the voltage from pin 2 and prints it to the console
 analogRead('468792', 2)
     .subscribe((data) => {
@@ -111,7 +111,7 @@ analogRead('468792', 2)
 
 ___
 ### getVariable()
-```
+```js
 getVariable(id, variable)
 ```
 Reads a variable from the device. This is useful for reading sensor data
@@ -119,7 +119,7 @@ Reads a variable from the device. This is useful for reading sensor data
 **id:** device ID.
 **variable:** variable name to read from.
 #### Example:
-```
+```js
 // Gets the value of variable 'temperatre' and prints it to the console
 getVariable('468792', 'temperature')
     .subscribe((data) => {
@@ -129,7 +129,7 @@ getVariable('468792', 'temperature')
 
 ___
 ### callFunction()
-```
+```js
 callFunction(id, called_function, parameters)
 ```
 Executes a pre-defined function on the device
@@ -138,7 +138,7 @@ Executes a pre-defined function on the device
 **called_function:** function name to call
 **parameters:** parameters to pass to the function
 #### Example:
-```
+```js
 // Calls the function 'turn_on_led' and passes the value 1
 callFunction('468792', 'turn_on_led', '1')
 ```
@@ -149,30 +149,29 @@ The changes made in this version were necessary in order to disconnect the libra
 The library is published under the same licence of aREST.
 
 ##### Initializes a variable and exposes it to RESTful API
-```
+```c
 int temperature;
 rest.variable("variable name", &temperature);
 ```
 
 ##### Sets a name for the device
-```
+```js
 rest.set_name("Weather Station");
 ```
 
 ##### Sets an ID for the device
-```
+```js
 rest.set_id("841239");
 ```
 The ID should be 6 characters long (will be automatically generated if not set)
 
 ##### Handle the client in the ```loop()``` function.
-```
+```js
 rest.handle(client);
 ```
 
-After uploading the sketch using the Arduino IDE, get the IP address from the serial monitor, enter it in your browser
-and you should receive something like this:
-```
+After uploading the sketch using the Arduino IDE, get the IP address from the serial monitor, enter it in your browser, and you should receive something like this:
+```json
 {"variables": {}, "id": "468792", "name": "Weather Station", "hardware": "esp8266", "connected": true}
 ```
 It should return a JSON body with all the device data.
